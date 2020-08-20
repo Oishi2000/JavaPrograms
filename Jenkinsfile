@@ -1,19 +1,24 @@
 pipeline {
     agent any 
+    tools {
+        maven "Maven3.6.3"
+    }
     stages {
-        stage('-----clean-----') { 
+        stage('SCM Checkout') { 
             steps {
-                sh "mvn clean"
+                git 
             }
         }
-        stage('-----Test-----') { 
+        stage('Compile Package') { 
             steps {
-                sh "mvn test"
-            }
-        }
-        stage('-----Deploy-----') { 
-            steps {
+                sh "mvn -version"
+                sh "mvn clean install"
                 sh "mvn package"
+            }
+        }
+        post{
+            always {
+                cleanWS()
             }
         }
     }
