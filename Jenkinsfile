@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('SCM Checkout') { 
             steps {
-                git 
+                git "https://github.com/Oishi2000/my_app_maven.git"
             }
         }
         stage('Compile Package') { 
