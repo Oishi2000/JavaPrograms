@@ -16,10 +16,10 @@ pipeline {
                 sh "mvn package"
             }
         }
-        post{
-            always {
-                cleanWS()
-            }
+    }
+    post {
+        always {
+            cleanWS()
         }
     }
 }
